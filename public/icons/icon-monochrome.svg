@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Monochrome icon for OS that recolors icons -->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect x="0" y="0" width="512" height="512" fill="#000"/>
+  <g fill="#fff" transform="translate(256 256) scale(0.9)">
+    <path d="M -88 84 L -22 -108 A 16 16 0 0 1 -7 -118 L 7 -118 A 16 16 0 0 1 22 -108 L 88 84 A 16 16 0 0 1 73 106 L 54 106 A 16 16 0 0 1 39 95 L 21 44 L -21 44 L -39 95 A 16 16 0 0 1 -54 106 L -73 106 A 16 16 0 0 1 -88 84 Z M -6 12 L 6 12 L 0 -12 Z"/>
+  </g>
+</svg>

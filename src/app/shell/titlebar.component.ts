@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -18,10 +18,8 @@ export class TitlebarComponent {
       const wco = navigator.windowControlsOverlay as { visible: boolean } | undefined;
       if (!wco) {
         return;
-      } 
-      effect(() => {
-        this.overlay.set(wco.visible);
-      });
+      }
+      this.overlay.set(wco.visible);
     }
   }
 }

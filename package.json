@@ -4,9 +4,14 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "start": "ng serve",
-    "dev": "concurrently \"ng serve\" \"wait-on http://localhost:4200 && tsc -p electron && electron .\"",
-    "build": "ng build && tsc -p electron",
-    "dist": "npm run build && electron-builder"
+    "electron:compile": "tsc -p electron && npx copyfiles -u 1 electron/assets/* dist-electron",
+    "dev": "concurrently \"ng serve\" \"wait-on http://localhost:4200 && npm run electron:compile && electron .\"",
+    "build": "ng build && npm run electron:compile",
+    "dist": "npm run build && electron-builder --config electron-builder.json --win"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/f14tomcat17/angular20-electron-starter.git"
   },
   "private": true,
   "dependencies": {

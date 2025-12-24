@@ -1,25 +1,13 @@
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
-import { join } from 'node:path';
+import { app, ipcMain, dialog, BrowserWindow } from 'electron';
 import { readFileSync } from 'node:fs';
-import { createSecondaryWindow } from './windows/secondary.window';
+import { createMainWindow } from './windows/main.window';
+import { registerDeepLinks, createTray, registerOpenWindowHandler } from './features';
 
-function createWindow() {
-  const win = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    webPreferences: {
-      preload: join(__dirname, 'preload.js')
-    }
-  });
-
-  if (!app.isPackaged) {
-    win.loadURL('http://localhost:4200');
-    win.webContents.openDevTools();
-  } else {
-    win.loadFile(
-      join(__dirname, '../browser/index.html')
-    );
-  }
+// Improve Windows integration: ensure a stable AppUserModelID
+if (process.platform === 'win32') {
+  try {
+    app.setAppUserModelId('com.example.angular-electron');
+  } catch {}
 }
 
 ipcMain.handle('open-file', async () => {
@@ -32,8 +20,15 @@ ipcMain.handle('open-file', async () => {
   return readFileSync(result.filePaths[0], 'utf-8');
 });
 
-ipcMain.handle('open-window', () => {
-  createSecondaryWindow();
+app.on('activate', function () {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow()
 });
 
 app.whenReady().then(createWindow);
+
+function createWindow() {
+  const mainWindow = createMainWindow();
+  createTray(mainWindow);
+  registerDeepLinks(mainWindow);
+  registerOpenWindowHandler();
+}

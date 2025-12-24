@@ -1,0 +1,14 @@
+{
+  "appId": "com.example.angular-electron",
+  "productName": "AngularElectronPro",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*"
+  ],
+  "publish": {
+    "provider": "github"
+  }
+}

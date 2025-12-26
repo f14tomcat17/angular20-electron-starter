@@ -13,6 +13,7 @@
   },
   "asar": true,
   "win": {
+    "icon": "electron/resources/app.ico",
     "target": [
       {
         "target": "nsis",
@@ -22,6 +23,16 @@
   },
   "nsis": {
     "oneClick": false,
-    "allowToChangeInstallationDirectory": true
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Angular20 Electron Starter",
+    "runAfterFinish": true,
+    "deleteAppDataOnUninstall": false,
+    "license": "electron/resources/LICENSE.txt",
+    "installerHeader": "electron/resources/installerHeader.bmp",
+    "installerIcon": "electron/resources/app.ico",
+    "uninstallerIcon": "electron/resources/app.ico"
   }
 }

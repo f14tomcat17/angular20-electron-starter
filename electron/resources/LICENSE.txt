@@ -1,0 +1,11 @@
+END USER LICENSE AGREEMENT (EULA)
+
+Copyright (c) Daniel Alejandro Vivas Tejuelo
+
+By installing this software you agree to the following terms:
+
+1. This software is provided "as is".
+2. You may not redistribute without permission.
+3. No warranty is provided.
+
+Press "I Agree" to continue.

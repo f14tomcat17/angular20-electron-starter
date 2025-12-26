@@ -2,6 +2,7 @@ import { app, ipcMain, dialog, BrowserWindow } from 'electron';
 import { readFileSync } from 'node:fs';
 import { createMainWindow } from './windows/main.window';
 import { registerDeepLinks, createTray, registerOpenWindowHandler } from './features';
+import { initAutoUpdater } from './updater';
 
 // Improve Windows integration: ensure a stable AppUserModelID
 if (process.platform === 'win32') {
@@ -31,4 +32,7 @@ function createWindow() {
   createTray(mainWindow);
   registerDeepLinks(mainWindow);
   registerOpenWindowHandler();
+  if (!process.defaultApp) {
+    initAutoUpdater(mainWindow);
+  }
 }
